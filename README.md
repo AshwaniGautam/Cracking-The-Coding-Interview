@@ -5,3 +5,5 @@ Again, these are not the ONLY solution.
 
 If you find any bug, Edge case failing, or implementational fault. Feel free to Pull. 
 I have, to the best of my knowledge, mentioned any assumption i made in the programs. Would be adding more problems.
+
+C.sh is a Bash file, It removes ALL the FILES in the current directory except cpp and Bash files.
