@@ -2,7 +2,7 @@
 
 for x in $(ls)
 do
-	if [[ $x != *.cpp ]] && [[ $x != *.sh ]] && [[ $x != *.md]]
+	if [[ $x != *.cpp ]] && [[ $x != *.sh ]] && [[ $x != *.md ]]
 	then
 		rm  $x
 	fi

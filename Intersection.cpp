@@ -3,6 +3,8 @@
 
 #include<stdio.h>
 #include<iostream>
+#include<stdlib.h>
+#include<time.h>
 using namespace std;
 
 struct Node{
@@ -11,39 +13,38 @@ struct Node{
 } ;
 
 int main(){
-    int inter, n1, input, n2, len1 = 0, len2 = 0;
+//--------------------------------------------------INPUT SECTION------------------------------------------------------------
+    int inter, n1, input, n2, len1 = 0, len2 = 0, irand;
     Node *head1, *head2, *ptr1, *ptr2, *interm  ;
+    srand (time(NULL));
 
-    cout << "Enter which node of the 1st LL to be the Intersection point(1-based) press 0 for no intersection" << endl  ;
-    cin  >> inter   ;
     head1 = new Node;
     head2 = new Node;
     head1 -> next = NULL;
     head2 -> next = NULL;
 
-    if (inter)
-        cout << "Enter No. of Nodes for First LL (>= " << inter << endl;
-    else
-        cout << "Enter No. of Nodes for First LL" << endl   ;
+    cout << "Enter The length of the First Linked List: "   ;
     cin  >> n1   ;
+
+    inter = rand() % n1  ;  // inter holds the index of the Intersecting node in the First Linked List.
 
     ptr1 = head1 ;
     for(int i = 0; i < n1; i++){
-        cin >> input    ;
+        cin >> input              ;
         Node *current = new Node  ;
-        current -> data = input ;
-        current -> next = NULL ;
-        ptr1 -> next = current   ;
-        ptr1 = current  ;
+        current -> data = input   ;
+        current -> next = NULL    ;
+        ptr1 -> next = current    ;
+        ptr1 = current            ;
 
-        if (inter)
-            if (i == inter - 1)
-                interm = ptr1   ;
+        if (i == inter)
+            interm = ptr1         ;
 
     }
 
     cout << "Enter Number of nodes for 2nd LL, before the intersection(if any)" << endl   ;
     cin >> n2   ;
+
     ptr2 = head2 ;
     for(int i = 0; i < n2; i++){
         cin >> input    ;
@@ -54,11 +55,14 @@ int main(){
         ptr2 = current              ;
     }
 
-    if (inter)
         ptr2 -> next = interm   ;   // this node is the  intersection(if any)
 
-    /*The Algo*/
+/*---------------------------------------------Algorithm Section-------------------------------------------------------------
 
+            head1 = Reference to the Head of the First  Linked List
+            head2 = Reference to the Head of the Second Linked List
+
+---------------------------------------------------------------------------------------------------------------------------*/
     ptr1 = head1 -> next    ;
     ptr2 = head2 -> next    ;
 
