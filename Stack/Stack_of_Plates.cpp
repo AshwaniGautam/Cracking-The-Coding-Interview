@@ -4,7 +4,7 @@
 #include<iostream>
 #include<stack>
 #include<vector>
-#define INT_MAX 999999
+#include<climits>
  using namespace std    ;
 
  class SetofStacks{
@@ -34,31 +34,23 @@
             if (stacks != 0){
                 if(!arr[stacks-1].empty())
                     arr[stacks-1].pop() ;
-                else
-                    cout << "Here begins a new stack :P" << endl    ;
             }
-            else
-                cout << "No stacks in the set" << endl  ;
         }
 
         int top(){
             if ( stacks != 0){
-                if (arr[stacks-1].empty()){
+                while(stacks >= 1 && arr[stacks-1].empty())
                     stacks--    ;
-                    cout << "Here begins a New Stack" << endl   ;
-                }
-                if( stacks != 0){
+                if( stacks != 0)
                     return arr[stacks-1].top()  ;
-                }
             }
-            cout << "No stacks left in the set :P " << endl  ;
-            return INT_MAX  ;
+            return INT_MIN  ;
         }
 
         void PopAt(int index){
-            // TODO
+            if (!arr[index - 1].empty())
+                arr[index-1].pop()  ;
         }
-
  }  ;
 
  int main(){
@@ -77,6 +69,9 @@
 
     cout << "<-------------------------------Output------------------------------------->"<< endl;
 
+    mystack.PopAt(3);
+    mystack.PopAt(3);
+    mystack.PopAt(3);
     for(int i = 0; i < elem; i++){
         cout << mystack.top() << " "<<endl   ;
         mystack.pop();
