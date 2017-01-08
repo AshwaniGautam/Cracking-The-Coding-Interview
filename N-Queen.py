@@ -1,6 +1,13 @@
 import sys
 
 
+'''
+    INPUT : N (integer)
+    OUTPUT: Total number of solution
+    Time Com.: O(N!)
+    Space Com.: O(N^2)  '''
+
+
 def column_check(col):
     for i in xrange(N):
         if chessboard[i][col]:
@@ -54,6 +61,7 @@ def solve(col):
     global total
     if col >= N:
         total += 1
+        #print chessboard       Uncomment this line to print all valid solutions
         return 1
 
     for i in xrange(N):
